@@ -1,0 +1,278 @@
+<div>
+<center><h1>ADVANCED STOPWATCH V2<h1></center>
+<hr>
+<div>
+  <h1>Stopwatch</h1>
+  <div id="stopwatch"></div>
+  <button onclick="startStopwatch()">Start</button>
+  <button onclick="pauseStopwatch()">Pause</button>
+  <button onclick="resetStopwatch()">Reset</button>
+</div>
+<hr>
+
+<div>
+  <h1>Timer</h1>
+  <div id="timer"></div>
+  <input type="text" id="timer-input" placeholder="Enter time in seconds">
+  <button onclick="startTimer()">Start</button>
+  <button onclick="pauseTimer()">Pause</button>
+  <button onclick="resetTimer()">Reset</button>
+</div>
+<hr>
+
+<div>
+  <h1>Current Time</h1>
+  <div id="current-time"></div>
+</div>
+<script>
+// Stopwatch variables
+let stopwatchInterval;
+let stopwatchTime = 0;
+
+// Timer variables
+let timerInterval;
+let timerTime = 0;
+
+// Stopwatch functions
+function startStopwatch() {
+  stopwatchInterval = setInterval(() => {
+    stopwatchTime++;
+    document.getElementById('stopwatch').innerHTML = formatTime(stopwatchTime);
+  }, 1000);
+}
+
+function pauseStopwatch() {
+  clearInterval(stopwatchInterval);
+}
+
+function resetStopwatch() {
+  clearInterval(stopwatchInterval);
+  stopwatchTime = 0;
+  document.getElementById('stopwatch').innerHTML = formatTime(stopwatchTime);
+}
+
+// Timer functions
+function startTimer() {
+  let input = document.getElementById('timer-input');
+  if (input.value !== '') {
+    timerTime = parseInt(input.value);
+    input.value = '';
+    timerInterval = setInterval(() => {
+      timerTime--;
+      document.getElementById('timer').innerHTML = formatTime(timerTime);
+      if (timerTime === 0) {
+        clearInterval(timerInterval);
+      }
+    }, 1000);
+  }
+}
+
+function pauseTimer() {
+  clearInterval(timerInterval);
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  timerTime = 0;
+  document.getElementById('timer').innerHTML = formatTime(timerTime);
+}
+
+// Current time function
+function updateTime() {
+  let now = new Date();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let seconds = now.getSeconds();
+  document.getElementById('current-time').innerHTML = formatTime(hours) + ':' + formatTime(minutes) + ':' + formatTime(seconds);
+}
+
+function formatTime(time) {
+  let formattedTime = time < 10 ? '0' + time : time;
+  return formattedTime;
+}
+
+// Update current time every second
+setInterval(updateTime, 1000);
+</script>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h2 {
+  margin-top: 40px;
+}
+
+div {
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+#timer,
+#stopwatch,
+#current-time {
+  font-size: 3rem;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  margin-bottom: 20px;
+}
+
+#timer-input {
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  margin-right: 10px;
+}
+
+button {
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #4CAF50;
+  color: white;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+input[type="text"]::placeholder {
+  color: #ccc;
+}
+
+input[type="text"]:focus {
+  border: 2px solid #4CAF50;
+}
+</style>
+<style>
+      h1 {
+        text-align: center;
+        color: red;
+        text-shadow: 0 0 5px #fff, 0 0 10px #e60073;
+      }
+      .borderless {
+  border: none;
+  outline: none;
+}
+
+    </style>
+        <style>
+      .textarea1 {
+        width: 90%;
+        height: 10px;
+        font-size: 16px;
+        font-family: Arial;
+        padding: 10px;
+        border-radius: 5px;
+        border: 3px solid #293437;
+        resize: none;
+      }
+    </style>
+<style>
+      body {
+        background: #293437;
+        margin-left: 0%;
+        margin-right: 0%;
+        margin-top: 4%;
+        margin-bottom: 5%;
+      }
+      .text {
+        color: red;
+        font-family: 'Astloch', sans-serif;
+        font-size: 40px;
+        transition: 0.5s ease;
+        text-align: center;
+      }
+      .text2 {
+        color: #93E5BE;
+        font-family: 'Astloch', sans-serif;
+        font-size: 30px;
+        transition: 0.5s ease;
+        text-align: center;
+      }
+      .text3 {
+        color: #93E5BE;
+        font-family: 'Astloch', sans-serif;
+        font-size: 40px;
+        transition: 0.5s ease;
+        text-align: center;
+      }
+      div {
+        background: white;
+        padding: 1px;
+        border-radius: 5px;
+        width: 90%;
+        margin: 0 auto;
+      }
+      @keyframes fly {
+        0% { transform: translate(0px,0px) rotate(0deg); }
+        25% { transform: translate(0px,0px) rotate(20deg); }
+        50% { transform: translate(0px,0px) rotate(-20deg); }
+        75% { transform: translate(0px 0px) rotate(0deg); }
+        100% { transform: translate(0px,0px) rotate(0deg); }
+      }
+      @keyframes down {
+        0% { transform: translate(0px,0px) rotate(0deg); }
+        25% { transform: translate(0px,0px) rotate(0deg); }
+        50% { transform: translate(0px,0px) rotate(0deg); }
+        75% { transform: translate(0px 0px) rotate(0deg); }
+        100% { transform: translate(0px,0px) rotate(0deg); }
+      }
+      @media only screen and (max-width: 768px) {
+        body {
+          margin-left: 5%;
+          margin-right: 5%;
+        }
+      }
+    </style>
+    <style>
+      body {
+        text-align: center;
+      }
+      
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+      
+      p {
+        font-size: 1.2em;
+      }
+      
+      textarea {
+        width: 80%;
+        height: 100px;
+        font-size: 1.2em;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      
+      input[type="number"] {
+        font-size: 1.2em;
+        padding: 5px;
+        width: 20%;
+        margin-bottom: 10px;
+      }
+      
+      button {
+        font-size: 1.2em;
+        padding: 10px 20px;
+        margin-right: 10px;
+      }
+      
+      #output {
+        width: 80%;
+        height: 100px;
+        font-size: 1.2em;
+        padding: 10px;
+        font-family: "Courier New", Courier, monospace;
+      }
+    </style>
